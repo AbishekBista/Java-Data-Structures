@@ -23,10 +23,16 @@ public class FindNFromEnd {
         if(head == null) {
             return null;
         }
+        if(n <= 0) {
+            throw new IllegalArgumentException("Invalid value of n: " + n);
+        }
         ListNode mainPtr = head;
         ListNode refPtr = head; // this will first make distance between itself and head
         int count = 0;
         while(count < n) {
+            if(refPtr == null) {
+                throw new IllegalArgumentException(n + " is greater than length of array.");
+            }
             refPtr = refPtr.next;
             count++;
         }
@@ -50,7 +56,7 @@ public class FindNFromEnd {
         third.next = fourth;
         fnfe.printList(head);
 
-        ListNode neededNode = fnfe.findNFromEnd(head, 4);
+        ListNode neededNode = fnfe.findNFromEnd(head, -1);
         System.out.println(neededNode.data);
     }
 }
